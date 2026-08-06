@@ -7,7 +7,11 @@ export default function SearchBar({
 }) {
   return (
     <div className="relative">
+      <label htmlFor="sphere-search" className="sr-only">
+        Search spheres
+      </label>
       <input
+        id="sphere-search"
         type="search"
         value={value}
         onChange={(e) => onChange(e.target.value)}

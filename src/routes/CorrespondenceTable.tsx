@@ -1,11 +1,12 @@
 import { Link } from 'react-router-dom'
+import type { ReactNode } from 'react'
 import { sephiroth } from '../data/sephiroth'
 import { colorHex } from '../components/ColorSwatch'
 import type { Sephira } from '../lib/types'
 
 type RowDef = {
   label: string
-  key: (s: Sephira) => React.ReactNode
+  key: (s: Sephira) => ReactNode
 }
 
 const ROWS: RowDef[] = [

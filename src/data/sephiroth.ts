@@ -87,6 +87,8 @@ export const sephiroth: Sephira[] = [
     why: 'The receiving, shaping, maternal intelligence that turns force into form. It exists so raw impulse is bounded, named, and made habitable.',
     how_to_use:
       'Ritual: invoke for containment, endings, and sober form-building. Psychological/creative: shape a draft into structure; practice saying no and finishing.',
+    modern_note:
+      'Understanding loves its own frames; a structure that explains the world is still just one structure.',
     source: {
       primary: 'Liber 777, Crowley 1909',
       secondary: 'Standard Golden Dawn attributions',
@@ -113,6 +115,8 @@ export const sephiroth: Sephira[] = [
     why: 'Expansive mercy and order: the stabilizing generosity of structure. It exists so the cosmos holds together with grace rather than collapse.',
     how_to_use:
       'Ritual: invoke for abundance, stability, and lawful expansion. Psychological/creative: organize, commit, and extend trust; build the container that holds the work.',
+    modern_note:
+      'Mercy without edges is how tyranny dresses itself — generosity is only as real as the capacity to refuse.',
     source: {
       primary: 'Liber 777, Crowley 1909',
       secondary: 'Standard Golden Dawn attributions',
@@ -251,6 +255,8 @@ export const sephiroth: Sephira[] = [
     why: 'The foundation and reservoir: the subtle substrate where images coalesce. It exists so the above is mirrored and stored before it manifests below.',
     how_to_use:
       'Ritual: invoke to stabilize dreams and the subtle body. Psychological/creative: keep an image-journal; notice recurring symbols; let the unconscious stage the work before you build it.',
+    modern_note:
+      "The moon makes images feel like arrival; they are the rehearsal, not the show.",
     source: {
       primary: 'Liber 777, Crowley 1909',
       secondary: 'Standard Golden Dawn attributions',

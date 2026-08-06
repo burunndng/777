@@ -19,7 +19,6 @@ const NAME_TO_HEX: Record<string, string> = {
   indigo: '#2e2a6b',
   citrine: '#c9b458',
   'olive / russet / black': '#6b6334',
-  olive: '#6b6334',
 }
 
 export function colorHex(name: string): string {

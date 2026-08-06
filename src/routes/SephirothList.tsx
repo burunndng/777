@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { useMemo, useState } from 'react'
+import { useMemo, useState, type KeyboardEvent } from 'react'
 import { sephiroth } from '../data/sephiroth'
 import SephiraCard from '../components/SephiraCard'
 import SephiraTable from '../components/SephiraTable'
@@ -11,6 +11,22 @@ type View = 'cards' | 'table'
 export default function SephirothList() {
   const [q, setQ] = useState('')
   const [view, setView] = useState<View>('cards')
+
+  const onTablistKeyDown = (e: KeyboardEvent<HTMLDivElement>) => {
+    if (e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') return
+    const tabs = Array.from(
+      e.currentTarget.querySelectorAll<HTMLButtonElement>('[role="tab"]'),
+    )
+    const idx = tabs.findIndex((t) => t.getAttribute('aria-selected') === 'true')
+    if (idx === -1) return
+    const next =
+      e.key === 'ArrowRight'
+        ? (idx + 1) % tabs.length
+        : (idx - 1 + tabs.length) % tabs.length
+    e.preventDefault()
+    setView(next === 0 ? 'cards' : 'table')
+    tabs[next].focus()
+  }
 
   const results = useMemo(() => {
     const t = q.trim().toLowerCase()
@@ -58,13 +74,16 @@ export default function SephirothList() {
         <div
           role="tablist"
           aria-label="View"
+          onKeyDown={onTablistKeyDown}
           className="inline-flex shrink-0 rounded-lg border border-edge bg-surface/70 p-1 text-xs"
         >
           {(['cards', 'table'] as const).map((v) => (
             <button
               key={v}
               role="tab"
+              id={`view-tab-${v}`}
               aria-selected={view === v}
+              aria-controls="view-panel"
               onClick={() => setView(v)}
               className={
                 'rounded-md px-3 py-1.5 font-mono uppercase tracking-wider transition ' +
@@ -79,17 +98,23 @@ export default function SephirothList() {
         </div>
       </div>
 
-      {results.length === 0 ? (
-        <p className="text-ink-faint">No spheres match “{q}”.</p>
-      ) : view === 'cards' ? (
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {results.map((s) => (
-            <SephiraCard key={s.number} s={s} />
-          ))}
-        </div>
-      ) : (
-        <SephiraTable items={results} />
-      )}
+      <div
+        id="view-panel"
+        role="tabpanel"
+        aria-labelledby={`view-tab-${view}`}
+      >
+        {results.length === 0 ? (
+          <p className="text-ink-faint">No spheres match “{q}”.</p>
+        ) : view === 'cards' ? (
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {results.map((s) => (
+              <SephiraCard key={s.number} s={s} />
+            ))}
+          </div>
+        ) : (
+          <SephiraTable items={results} />
+        )}
+      </div>
     </div>
   )
 }

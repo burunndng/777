@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import type { ReactNode } from 'react'
 import ColorSwatch from './ColorSwatch'
 import { sephiroth } from '../data/sephiroth'
 import type { Sephira } from '../lib/types'
@@ -10,7 +11,7 @@ function Field({
 }: {
   label: string
   numeral: string
-  children: React.ReactNode
+  children: ReactNode
 }) {
   return (
     <div className="border-t border-edge py-4">
@@ -22,7 +23,7 @@ function Field({
   )
 }
 
-function Tag({ children }: { children: React.ReactNode }) {
+function Tag({ children }: { children: ReactNode }) {
   return (
     <span className="inline-block rounded-full border border-edge px-3 py-1 text-xs text-ink-soft">
       {children}
