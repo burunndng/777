@@ -14,6 +14,10 @@ A clean, modern, searchable reference to the **10 Sephiroth** of Aleister Crowle
 - **Triads** — the Supernal, Ethical, and Astral triads laid out
 - **Correspondence table** — the full 13-row × 10-column matrix, transposed for readability
 
+## Live
+
+**https://777-gamma-weld.vercel.app** — also embedded in AuraDesk (launcher → Practice → 777).
+
 ## Stack
 
 Vite · React 19 · TypeScript (strict) · Tailwind · react-router-dom 7 — static build, zero backend.
