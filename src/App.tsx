@@ -5,6 +5,7 @@ import SephirothList from './routes/SephirothList'
 import SephiraDetail from './routes/SephiraDetail'
 import Triads from './routes/Triads'
 import CorrespondenceTable from './routes/CorrespondenceTable'
+import Search from './routes/Search'
 
 export default function App() {
   return (
@@ -15,6 +16,7 @@ export default function App() {
         <Route path="/sephiroth/:number" element={<SephiraDetail />} />
         <Route path="/triads" element={<Triads />} />
         <Route path="/table" element={<CorrespondenceTable />} />
+        <Route path="/search" element={<Search />} />
       </Routes>
     </Layout>
   )

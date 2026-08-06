@@ -41,6 +41,9 @@ export default function Layout({ children }: { children: ReactNode }) {
             <Link to="/triads" className="link-gilt hover:text-ink">
               Triads
             </Link>
+            <Link to="/search" className="link-gilt hover:text-ink">
+              Search
+            </Link>
           </nav>
         </div>
       </header>
