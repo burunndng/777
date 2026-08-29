@@ -1,46 +1,56 @@
-# 777 — Sephiroth
+# Hyperspace — DMT Field Atlas
 
-A clean, modern, searchable reference to the **10 Sephiroth** of Aleister Crowley's *Liber 777* (1909). A map of symbolic associations and archetypes — built for practitioners, artists, and the psych/history-curious alike, not a ritual engine and not a scholarly edition.
+A psychonaut-first field atlas of reported DMT worlds, entities, encounters,
+communication, and recurring community motifs. It keeps the experience vivid
+while separating controlled findings, structured reports, selected surveys, and
+community vocabulary.
 
-## What it is
+## Experience
 
-*Liber 777* is Crowley's table of correspondences: a grid mapping the ten spheres of the Tree of Life across planets, divine names, archangels, colors, tarot, symbols, and figures. This app distills its core spine — the ten spheres — into a calm, readable reference that teaches what each cluster means, why it still matters (as a compression algorithm for meaning, a Schelling point for the imagination), and how to use it: in practice, or as a creative and psychological lens.
+- **Home** — enter the atlas through an experience-first orientation.
+- **Explore** — browse field notes across the state, worlds, entities, encounters, communication, and motifs.
+- **Search** — tune the receiver with terms such as `mantis`, `telepathy`, `clinic`, `waiting room`, or `machine elves`.
+- **Field notes** — read the evidence hierarchy and exact research threads behind the atlas.
 
-## Features
-
-- **Home** — what / why / how in one screen, with the Tree of Life diagram
-- **Ten Spheres** — searchable list (cards or table view) of all 10 Sephiroth
-- **Per-sphere detail** — full cluster: meanings, correspondences, virtues and vices, modern context notes, sibling/pillar navigation, keyboard ←/→ stepping
-- **Triads** — the Supernal, Ethical, and Astral triads laid out
-- **Correspondence table** — the full 13-row × 10-column matrix, transposed for readability
-
-## Live
-
-**https://777-gamma-weld.vercel.app** — also embedded in AuraDesk (launcher → Practice → 777).
-
-## Stack
-
-Vite · React 19 · TypeScript (strict) · Tailwind · react-router-dom 7 — static build, zero backend.
+The app is not a claim that named places or entities exist independently of the
+people who report them. It is a map of recurring descriptions, felt realities,
+and the language communities built around them.
 
 ## Develop
 
 ```sh
 bun install
-bun run dev      # localhost:5173
-bun run build    # tsc + vite build → dist/
+bun run dev
 bun run lint
-bun test         # data-integrity suite
+bun run test
+bun run build
 ```
-
-Data lives in `src/data/sephiroth.ts` — one entry per sphere, schema in `src/lib/types.ts`. See `AGENTS.md` for conventions.
 
 ## Sources
 
-- *Liber 777*, Aleister Crowley, 1909 — primary correspondence source (public domain). Original: [Liber 777 PDF](http://93beast.fea.st.user.fm/files/section1/777/Liber%20777.pdf)
-- Standard Golden Dawn attributions, secondary
-- The project's design DNA: *Liber 777 — A Prologue on the Architecture of Symbolic Power* (`2026Liber-777-Prologue.pdf` in this repo)
+The research index begins with:
 
-Crowley is treated as historical source, not scripture.
+- Davis et al. (2020), *Survey of entity encounter experiences occasioned by inhaled N,N-dimethyltryptamine*, Journal of Psychopharmacology. [DOI](https://doi.org/10.1177/0269881120916143)
+- Michael, Luke & Robinson (2021), *An Encounter With the Other*, Frontiers in Psychology. [DOI](https://doi.org/10.3389/fpsyg.2021.720717)
+- Timmermann et al. (2018), *DMT Models the Near-Death Experience*, Frontiers in Psychology. [DOI](https://doi.org/10.3389/fpsyg.2018.01424)
+- Timmermann et al. (2019), *Neural correlates of the DMT experience assessed with multivariate EEG*, Scientific Reports. [DOI](https://doi.org/10.1038/s41598-019-51974-4)
+- Timmermann et al. (2023), *Human brain effects of DMT assessed via EEG-fMRI*, PNAS. [DOI](https://doi.org/10.1073/pnas.2218949120)
+
+Community terms such as Waiting Room, machine elves, hyperslap, and
+Chrysanthemum are retained as cultural vocabulary, not prevalence or ontology
+claims.
+
+## Release check
+
+Run `bun install --frozen-lockfile`, then `bun run lint`, `bun run test`, and
+`bun run build`. Before deploying, verify at desktop and narrow mobile widths:
+
+- primary navigation and keyboard focus;
+- Tree/atlas links and direct `/atlas/:slug` links;
+- search examples and field-note results;
+- source links and evidence labels;
+- invalid paths and print output;
+- reduced-motion behavior.
 
 ## License
 

@@ -1,77 +1,49 @@
-import { Link } from 'react-router-dom'
-import type { ReactNode } from 'react'
-
-const SOURCES = [
-  'Crowley, A. (1909). Liber 777.',
-  'Agrippa, H. C. (1533). Three Books of Occult Philosophy.',
-  'Kaplan, A. (trans.). (1990). Sefer Yetzirah.',
-  'Lévi-Strauss, C. (1962). The Savage Mind.',
-  'Durkheim, É. (1912). The Elementary Forms of Religious Life.',
-  'Luhrmann, T. M. (1989). Persuasions of the Witch’s Craft.',
-  'Whitehouse, H. (2004). Modes of Religiosity.',
-]
+import { Link, NavLink, useLocation } from 'react-router-dom'
+import { useEffect, type ReactNode } from 'react'
+import { applyPageMeta, getPageMeta } from '../lib/metadata'
 
 export default function Layout({ children }: { children: ReactNode }) {
+  const location = useLocation()
+
+  useEffect(() => {
+    applyPageMeta(getPageMeta(location.pathname))
+  }, [location.pathname])
+
+  const navClass = ({ isActive }: { isActive: boolean }) =>
+    `atlas-nav__link ${isActive ? 'is-active' : ''}`
+
   return (
-    <div className="flex min-h-screen flex-col">
+    <div className="atlas-app">
       <a
         href="#main"
         className="sr-only focus:not-sr-only focus:fixed focus:left-3 focus:top-3 focus:z-50 focus:rounded-md focus:border focus:border-gilt focus:bg-bg focus:px-3 focus:py-1.5 focus:text-xs focus:text-ink"
       >
         Skip to content
       </a>
-      <header className="no-print sticky top-0 z-10 border-b border-edge bg-bg/80 backdrop-blur">
-        <div className="mx-auto flex max-w-5xl items-center justify-between px-5 py-4">
-          <Link to="/" className="flex items-baseline gap-3" aria-label="777 Sephiroth — home">
-            <span className="font-display text-2xl tracking-[0.2em] text-gilt">
-              777
-            </span>
-            <span className="eyebrow">Sephiroth</span>
+      <header className="atlas-header">
+        <div className="atlas-header__inner">
+          <Link to="/" className="atlas-mark" aria-label="DMT Hyperspace Atlas home">
+            <span className="atlas-mark__glyph" aria-hidden="true">✦</span>
+            <span><strong>HYPERSPACE</strong><small>DMT FIELD ATLAS</small></span>
           </Link>
-          <nav aria-label="Primary" className="flex items-center gap-6 text-sm text-ink-soft">
-            <Link to="/" className="link-gilt hover:text-ink">
-              About
-            </Link>
-            <Link to="/table" className="link-gilt hover:text-ink">
-              Table
-            </Link>
-            <Link to="/sephiroth" className="link-gilt hover:text-ink">
-              Spheres
-            </Link>
-            <Link to="/triads" className="link-gilt hover:text-ink">
-              Triads
-            </Link>
-            <Link to="/search" className="link-gilt hover:text-ink">
+          <nav aria-label="Primary" className="atlas-nav">
+            <NavLink to="/atlas" className={navClass}>Explore</NavLink>
+            <NavLink to="/search" className={navClass}>
               Search
-            </Link>
+            </NavLink>
+            <NavLink to="/sources" className={navClass}>Field notes</NavLink>
           </nav>
+          <span className="signal-chip"><span className="signal-chip__dot" /> LIVE INDEX</span>
         </div>
       </header>
 
-      <main id="main" className="mx-auto w-full max-w-5xl flex-1 px-5 py-12">
-        {children}
-      </main>
+      <main id="main">{children}</main>
 
-      <footer className="mx-auto w-full max-w-5xl px-5 pb-12 pt-4">
-        <div className="hairline" />
-        <div className="mt-6 grid gap-6 md:grid-cols-[1fr_1.4fr]">
-          <div>
-            <p className="eyebrow mb-2">Colophon</p>
-            <p className="text-sm leading-relaxed text-ink-faint">
-              A clean reference for the ten Sephiroth of Liber 777. Crowley’s
-              correspondences are historical source material; the framing,
-              modern notes, and layout are a contemporary re-reading — not
-              scripture.
-            </p>
-          </div>
-          <div>
-            <p className="eyebrow mb-2">Sources</p>
-            <ul className="space-y-1 text-xs leading-relaxed text-ink-faint">
-              {SOURCES.map((s) => (
-                <li key={s}>{s}</li>
-              ))}
-            </ul>
-          </div>
+      <footer className="atlas-footer">
+        <div className="atlas-footer__inner">
+          <div><span className="footer-sigil">✦</span><p>Built for the curious.<br />Held to the evidence.</p></div>
+          <div className="footer-links"><Link to="/sources">Sources &amp; method</Link><a href="https://doi.org/10.1177/0269881120916143" target="_blank" rel="noreferrer">Research index ↗</a></div>
+          <p className="footer-copyright">A living index of reported DMT phenomenology<br />and the language that grew around it.</p>
         </div>
       </footer>
     </div>
