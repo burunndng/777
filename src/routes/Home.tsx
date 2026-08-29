@@ -1,124 +1,49 @@
 import { Link } from 'react-router-dom'
-import TreeDiagram from '../components/TreeDiagram'
+import { ENTRIES, SECTION_META, type AtlasSection } from '../lib/atlas'
 
-const USAGE = [
-  {
-    title: 'Look up one cluster',
-    body: 'Open a sphere and read its correspondences as a single, self-contained map — number, planet, color, image, figures.',
-  },
-  {
-    title: 'Use it as a creative constraint',
-    body: 'Take one sphere as a prompt set for writing or art. The same theme repeats across scale, so the constraint does the composing.',
-  },
-  {
-    title: 'Read it as an archetypal lens',
-    body: 'Use each sphere’s virtue, vice, and “why” as a mirror for a part of yourself. It is a vocabulary for inner geography, not a verdict.',
-  },
-  {
-    title: 'Build a coherent working',
-    body: 'For ritual practice, pick a sphere and let its cluster hold one theme. Constraint and repetition are what make a table more than decoration.',
-  },
+const featured: { section: AtlasSection; count: string; note: string }[] = [
+  { section: 'state', count: '03', note: 'Immersion, intensity, time, self' },
+  { section: 'worlds', count: '02', note: 'Rooms, tunnels, landscapes, voids' },
+  { section: 'entities', count: '02', note: 'Forms, presence, autonomy' },
+  { section: 'encounters', count: '02', note: 'Welcome, teaching, examination' },
+  { section: 'communication', count: '01', note: 'Telepathy, symbols, knowing' },
+  { section: 'motifs', count: '03', note: 'Names the community gave the impossible' },
 ]
 
 export default function Home() {
   return (
-    <div className="flex flex-col gap-16">
-      <section className="grid items-center gap-10 md:grid-cols-2">
-        <div className="flex flex-col gap-4">
-          <p className="eyebrow">A modern reference · Liber 777 (1909)</p>
-<h1 className="font-display text-6xl leading-[1.05] text-ink">
-            Correspondence
-            <br />
-            <span className="text-gilt">table for the 10 Sephiroth</span>
-          </h1>
-          <p className="prose-reading text-lg">
-            A clean, searchable reference to the core correspondence table of
-            Aleister Crowley's <em>Liber 777</em>. Ten spheres, side by side —
-            planets, divine names, archangels, colors, symbols, and more.
-            Read it as a map of symbolic associations, not a ritual engine and
-            not scripture.
-          </p>
-          <Link
-            to="/table"
-            className="mt-2 inline-flex w-fit items-center gap-2 rounded-lg border border-edge-strong bg-raised px-5 py-3 text-sm text-ink transition hover:border-gilt/60"
-          >
-            Open the correspondence table →
-          </Link>
+    <div className="home-page">
+      <section className="hero-atlas">
+        <div className="hero-atlas__grid" aria-hidden="true" />
+        <div className="hero-atlas__orb hero-atlas__orb--one" aria-hidden="true" />
+        <div className="hero-atlas__orb hero-atlas__orb--two" aria-hidden="true" />
+        <div className="hero-atlas__content">
+          <p className="kicker"><span className="kicker__line" /> AN INDEX OF THE REPORTED IMPOSSIBLE <span className="kicker__line" /></p>
+          <h1>Somewhere<br /><em>else.</em></h1>
+          <p className="hero-atlas__dek">A field guide to the worlds, entities, encounters, and recurring motifs reported in intense DMT experiences.</p>
+          <div className="hero-atlas__actions"><Link to="/atlas" className="button button--bright">Enter the atlas <span>↗</span></Link><Link to="/search" className="text-link">Tune the receiver <span>⌁</span></Link></div>
         </div>
-        <div className="mx-auto w-full max-w-[340px]">
-          <TreeDiagram className="w-full" />
-        </div>
+        <div className="hero-atlas__caption"><span>01</span><span>Experience first · research held close</span><span>↘</span></div>
       </section>
 
-      <section className="mx-auto flex max-w-reading flex-col gap-4">
-        <h2 className="font-display text-3xl text-ink">Why it’s useful</h2>
-        <p className="prose-reading">
-          A correspondence table is a <em>compression algorithm for meaning</em>.
-          Across two millennia it accumulated semantic thickness — enough that
-          generations found it workable to keep. It gives four things intuition
-          alone cannot: <strong>constraint</strong>,{' '}
-          <strong>repetition across scale</strong>,{' '}
-          <strong>cognitive saturation</strong>, and{' '}
-          <strong>memory stability</strong> — a lattice you can internalize for
-          good.
-        </p>
-        <p className="prose-reading">
-          Because it is a shared, inherited table, it behaves like a{' '}
-          <em>Schelling point for the imagination</em>: strangers converge on one
-          symbolic field precisely because it is given and ancient, not anyone’s
-          private language. Used as <em>backbone</em> rather than a total system,
-          it holds a working’s architecture while your own experience carries its
-          charge.
-        </p>
-        <p className="prose-reading text-ink-faint">
-          Honest caveat: the lattice is old enough to feel inevitable, but the
-          letter–Tarot mappings are largely nineteenth-century constructions, and
-          its survival reflects print culture and taste as much as efficacy. A web
-          wired this richly is also a superb instrument for apophenia — seeing
-          confirmation everywhere. Hold that alongside the usefulness.
-        </p>
+      <section className="intro-band content-width">
+        <div className="section-number">01 <span>/</span> ORIENTATION</div>
+        <div className="intro-band__copy"><h2>A map for the<br /><em>strange familiar.</em></h2><p>People return from DMT with descriptions of places that felt inhabited, agents that felt autonomous, and messages that arrived without a mouth. This atlas gathers those reports without turning them into a fixed cosmology.</p><Link to="/sources" className="text-link">How to read this atlas <span>→</span></Link></div>
+        <div className="intro-band__signal"><span className="signal-ring signal-ring--a" /><span className="signal-ring signal-ring--b" /><span className="signal-ring signal-ring--c" /><strong>10.0<span>°</span></strong><small>REALITY<br />SHIFT</small></div>
       </section>
 
-      <section className="mx-auto flex max-w-reading flex-col gap-4">
-        <h2 className="font-display text-3xl text-ink">How to use it</h2>
-        <div className="grid gap-4 sm:grid-cols-2">
-          {USAGE.map((u) => (
-            <div
-              key={u.title}
-              className="rounded-lg border border-edge bg-surface/60 p-4"
-            >
-              <h3 className="font-display text-xl text-ink">{u.title}</h3>
-              <p className="mt-1 text-sm text-ink-soft">{u.body}</p>
-            </div>
-          ))}
-        </div>
+      <section className="atlas-index content-width">
+        <div className="index-heading"><div><div className="section-number">02 <span>/</span> THE INDEX</div><h2>Choose a <em>door.</em></h2></div><p>Six ways into the experience.<br />No single route is canonical.</p></div>
+        <div className="index-grid">{featured.map(({ section, count, note }, i) => <Link to={`/atlas?section=${section}`} className={`index-card index-card--${SECTION_META[section].color}`} key={section}><span className="index-card__count">{count}</span><span className="index-card__arrow">↗</span><div><h3>{SECTION_META[section].label}</h3><p>{note}</p></div><span className="index-card__orb" aria-hidden="true" /><span className="index-card__number">0{i + 1}</span></Link>)}</div>
       </section>
 
-      <section className="mx-auto flex max-w-reading flex-col gap-4">
-        <h2 className="font-display text-3xl text-ink">On this reference</h2>
-          <p className="prose-reading">
-          <strong>Scope.</strong> Only the ten Sephiroth of the Tree of Life —
-          no paths, no full 777 columns. Each sphere carries the standard
-          correspondences (planet, divine name, archangel, angelic order,
-          color, symbols, the four pip cards of the Tarot) and a short
-          psychological and creative gloss. The <Link to="/table" className="link-gilt text-ink-soft hover:text-ink">correspondence table</Link> shows all ten side by side.
-        </p>
-        <p className="prose-reading">
-          <strong>Sources.</strong> The correspondences follow Crowley’s{' '}
-          <em>Liber 777</em> (1909) and the standard Golden Dawn schema. The
-          framing, modern notes, and layout are a contemporary re-reading —
-          Crowley is seed data, not scripture. Where the tradition is shaky
-          (letter–Tarot mappings are largely nineteenth-century construction),
-          the marginalia say so.
-        </p>
-        <p className="prose-reading">
-          <strong>How to read an entry.</strong> Open a sphere and read straight
-          through — name, divine name, archangel, then the correspondences, then
-          the why and the how-to-use. The pillar and triad chips at the top of
-          each entry cross-link to the other spheres in the same structural
-          group.
-        </p>
+      <section className="featured-band content-width">
+        <div className="section-number">03 <span>/</span> FIELD SIGNAL</div>
+        <div className="featured-band__layout"><div><p className="micro-label">MOST RETURNED TO</p><h2>Apparently<br /><em>autonomous</em><br />agents</h2><p className="featured-band__copy">The presence that does not feel invented. Conscious, intelligent, surprising—sometimes kind, sometimes clinical, sometimes looking straight through you.</p><Link to="/atlas/apparently-autonomous" className="button button--outline">Read the field note <span>↗</span></Link></div><div className="featured-visual" aria-hidden="true"><div className="featured-visual__halo" /><div className="featured-visual__figure"><span /><span /><span /><span /></div><div className="featured-visual__label">AGENCY<br /><b>?</b></div></div></div>
       </section>
+
+      <section className="home-close content-width"><p className="kicker"><span className="kicker__line" /> THE EXPERIENCE IS REAL. THE EXPLANATION IS OPEN. <span className="kicker__line" /></p><h2>Keep your<br /><em>wonder.</em></h2><Link to="/atlas" className="button button--bright">Begin wandering <span>↗</span></Link></section>
+      <span className="sr-only">{ENTRIES.length} field notes are indexed.</span>
     </div>
   )
 }
